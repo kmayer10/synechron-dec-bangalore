@@ -1,0 +1,266 @@
+    1  exit
+    2  vi /etc/ssh/sshd_config 
+    3  systemctl restart sshd
+    4  useradd thinknyx
+    5  passwd thinknyx
+    6  passwd root
+    7  visudo
+    8  systemctl restart sshd
+    9  passwd centos
+   10  systemctl restart sshd
+   11  vi /etc/ssh/sshd_config 
+   12  vi /etc/cloud/cloud.cfg
+   13  reboot
+   14  git --version
+   15  pwd
+   16  mkdir training
+   17  cd training/
+   18  mkdir repo
+   19  cd repo/
+   20  ls -la
+   21  git --version
+   22  git status
+   23  pwd
+   24  git init
+   25  ls -la
+   26  git status
+   27  git log
+   28  touch training
+   29  ls -la
+   30  git status
+   31  git add training 
+   32  git status
+   33  git rm --cached training 
+   34  git status
+   35  git add training 
+   36  git log
+   37  git commit -m "adding an empty file"
+   38  git status
+   39  git log
+   40  git config --global user.name "Kul"
+   41  git config --global user.email "Kulbhushan.mayer@thinknyx.com"
+   42  git commit --amend --reset-author
+   43  git log
+   44  git commit --amend
+   45  git log
+   46  git log -p
+   47  echo change-1 >> training 
+   48  git status
+   49  git commit -am "change 1"
+   50  git log -p
+   51  git log --oneline
+   52  git status
+   53  history 
+   54  echo "delete demo" > file1
+   55  git add file1 
+   56  git status
+   57  git commit -m "adding for delete demo"
+   58  git log --oneline
+   59  ll
+   60  git rm file1 
+   61  git status
+   62  git reset HEAD file1
+   63  ll
+   64  git status
+   65  git checkout -- file1
+   66  ll
+   67  git status
+   68  git rm file1 
+   69  git commit -m "deleted file for GIT rm demo"
+   70  git log --oneline
+   71  git log -p
+   72  touch move-demo > file2
+   73  git status
+   74  rm -rf file2 move-demo 
+   75  echo move-demo > file2
+   76  git status
+   77  git add file2 
+   78  git commit -m "mv demo - 1"
+   79  ll
+   80  mkdir dir1
+   81  git status
+   82  mv file2 dir1/
+   83  git status
+   84  mv dir1/file2 .
+   85  git status
+   86  git mv file2 dir1/
+   87  git status
+   88  git commit -m "move file to diff folder for GIT MV demo"
+   89  git status
+   90  git log -p
+   91  ll
+   92  cd dir1/
+   93  ll
+   94  rm -rf file2 
+   95  git status
+   96  ll
+   97  git checkout -- file2
+   98  git resset HEAD file2
+   99  git reset HEAD file2
+  100  ll
+  101  ls -ltr
+  102  chmod 777 file2 
+  103  git status
+  104  ll
+  105  git checkout -- file2 
+  106  ll
+  107  history
+  108  history >> history
+  109  ll
+  110  cd ../
+  111  mkdir history
+  112  mv dir1/history history/
+  113  ll
+  114  git status
+  115  echo history/ >> .gitignore
+  116  git status
+  117  git add .gitignore 
+  118  git commit -m "adding git ignore file"
+  119  cat .gitignore 
+  120  echo training >> .gitignore 
+  121  cat .gitignore 
+  122  vi .gitignore 
+  123  git status
+  124  git log --oneline
+  125  git status
+  126  git branch
+  127  git branch -r
+  128  git branch new-branch
+  129  git branch
+  130  git checkout new-branch
+  131  ll
+  132  git status
+  133  git log --oneline
+  134  echo "branch demo" >> training 
+  135  touch newfile
+  136  git status
+  137  git add --all
+  138  git status
+  139  git commit -m "branching demo - 1"
+  140  git log -p
+  141  git checkout mastdiff --git a/newfile b/newfile
+  142  new file mode 100644
+  143  index 0000000..e69de29
+  144  diff --git a/training b/training
+  145  index 6d50578..9c70197 100644
+  146  --- a/training
+  147  +++ b/training
+  148  @@ -1 +1,2 @@
+  149   change-1
+  150  +branch demo
+  151  git checkout master
+  152  ll
+  153  cat training 
+  154  git log --oneline
+  155  ll
+  156  cd training/
+  157  cd repo/
+  158  ll
+  159  git status
+  160  git branch
+  161  git merge new-branch
+  162  ll
+  163  cat training 
+  164  git log --oneline
+  165  echo recurse-merge-demo >> training 
+  166  git commit -am "recurse-merge-demo-1"
+  167  git checkout new-branch
+  168  echo recurse-merge-demo >> newfile 
+  169  git commit -am "recurse-merge-demo-2"
+  170  git log --online
+  171  git log --oneline
+  172  git branch maste
+  173  git checkout master
+  174  git log --oneline
+  175  git merge new-branch
+  176  git log --oneline
+  177  git checkout new-branch
+  178  echo conflict-merge-demo >> training
+  179  git commit -am "conflict-merge-demo-1"
+  180  git checkout master
+  181  echo conflict-merge-demo-master >> training
+  182  git commit -am "conflict-merge-demo-2"
+  183  git merge new-branch
+  184  git status
+  185  cat training 
+  186  vi training 
+  187  git status
+  188  git commit -am "resolved conflicts - merge-demo-3"
+  189  git status
+  190  git checkout new-branch
+  191  git merge master
+  192  git status
+  193  git log --oneline
+  194  git branch -d new-branch
+  195  git checkout master
+  196  git branch -d new-branch
+  197  git log --oneline
+  198  history
+  199  history > history/history 
+  200  cat history/history 
+  201  history
+  202  git log --oneline
+  203  cd training/repo/
+  204  git log --oneline
+  205  echo revert-demo >> training 
+  206  git commit -am "revert-demo-1"
+  207  cat training 
+  208  git log --oneline
+  209  echo revert-demo >> newfile 
+  210  git commit -am "revert-demo-2"
+  211  git log --oneline
+  212  git revert 76e8198
+  213  git log --oneline
+  214  cat training 
+  215  git revert 76e8198
+  216  echo reset-demo >> training 
+  217  git commit -am "reset-demo-1"
+  218  echo reset-demo >> training 
+  219  git commit -am "reset-demo-2"
+  220  echo reset-demo >> training 
+  221  git commit -am "reset-demo-3"
+  222  cat training 
+  223  git log --oneline
+  224  git reset 7cee58d
+  225  git log --oneline
+  226  cat training 
+  227  git commit -am "reset-demo-1"
+  228  git log --oneline
+  229  git reset 7cee58d --hard
+  230  git log --oneline
+  231  cat training 
+  232  history
+  233  history > history/history 
+  234  cat history/history 
+  235  history
+  236  cd training/repo/
+  237  git remote -v
+  238  git remote add origin https://github.com/kmayer10/synechron-dec-bangalore.git
+  239  git remote -v
+  240  git log --onelinr=e
+  241  git log --oneline
+  242  git push origin master
+  243  git branch
+  244  git branch -r
+  245  cd training/repo/
+  246  git fetch origin
+  247  git branch
+  248  git branch -r
+  249  git fetch origin
+  250  git log --oneline
+  251  git branch -r
+  252  git checkout KT-10-Synechron-Dec-DevOps-Batch
+  253  git branch
+  254  git status
+  255  git pull origin KT-10-Synechron-Dec-DevOps-Batch
+  256  cat github-demo.sh 
+  257  git log --oneline
+  258  cat github-demo.sh 
+  259  git fetch origin
+  260  cat github-demo.sh 
+  261  git log --oneline
+  262  git merge origin/KT-10-Synechron-Dec-DevOps-Batch
+  263  git log --oneline
+  264  cat github-demo.sh 
+  265  cd training/repo/
+  266  history > history/history 
